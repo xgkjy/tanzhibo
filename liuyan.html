@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>WebCat</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap5/css/bootstrap.min.css">
+    <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="bootstrap5/css/gongneng.css">
+  </head>
+  <body >
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="javascript:void(0)"><img src="tupian/logo.png" height="40px" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+          <ul class="navbar-nav me-auto ">
+            <li class="nav-item">
+              <a class="nav-link" href="shouye.html">本人首页</a> 
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:void(0)">兴趣爱好</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ox.html">我的偶像</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="liuyan.html">给我留言</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aix.html">爱心</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="请输入查找内容">
+            <button class="btn btn-outline-warning text-nowrap" type="button">搜索</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form id="messageForm">
+            <div class="mb-3">
+              <label for="userName">用户名</label>
+              <input type="text" class="form-control" id="userName" style="width: 100px;">  <!-- 调整宽度 -->
+            </div>
+            <div class="mb-3">
+              <label for="messageInput" class="form-label">留言内容</label>
+              <textarea type="text" class="form-control" id="messageInput" rows="4" style="resize: vertical;"></textarea>  <!-- 可拉伸 -->
+            </div>
+            <button type="submit" class="btn btn-warning">提交留言</button>  <!-- 改为黄色按钮 -->
+          </form>
+        </div>
+        <div style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); border-radius: 10px;" class="col-md-6 ">
+          <h3 >留言信息</h3>  <!-- 添加阴影边框 -->
+          <div id="messageList"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="navbar-static-bottom bg-light text-center p-3 my-5">
+      2024&copy;谭之博网站版权所有。
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // 处理留言提交
+      document.getElementById('messageForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const userName = document.getElementById('userName').value;
+        const message = document.getElementById('messageInput').value;
+
+        if (!userName ||!message) {  // 验证是否为空
+          alert('用户名和留言信息不能为空！');
+          return;
+        }
+
+        const date = new Date();
+        const time = date.toLocaleTimeString();
+
+        // 模拟添加留言到列表
+        const messageListItem = document.createElement('div');
+        messageListItem.textContent = `${userName} (${time}): ${message}`;
+        document.getElementById('messageList').appendChild(messageListItem);
+
+        // 提示留言成功
+        alert('留言成功！');
+
+        // 清空输入框
+        document.getElementById('userName').value = '';
+        document.getElementById('messageInput').value = '';
+      });
+    </script>
+  </body>
+</html>
